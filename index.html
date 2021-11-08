@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>eShop</title>
+  <style>
+    .modal{
+      width: 600px;
+      height: 400px;
+      position: absolute;
+      top: 100px;
+      left: calc(50% - 300px);
+      border: 1px solid #ccc;
+      background-color: white;
+      border-radius: 4px;
+    }
+    .close{
+      position: absolute;
+      top: 5px;
+      right: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <header>
+      <search v-on:search="onSearch"></search>
+      <button class="cart-button" type="button" v-on:click="onToggleCart">Корзина</button>
+    </header>
+    <main>
+      <goods-list 
+        v-bind:list="filteredGoods"
+        v-on:add="addToCart"
+      ></goods-list>
+    </main>
+
+    
+    <cart v-bind:isVisibleCart="isVisibleCart" v-bind:cart="cart" v-on:remove="removeFromCart" v-on:close="onToggleCart"></cart>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
